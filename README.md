@@ -1,16 +1,11 @@
-# guess_date_app
+# guess date app
 
-guess date app
+Think of a date, and this app will read your mind
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. install the apps
+2. open the apps
+3. read the instructions carefully, then click 'got it, next'
+4. enjoy!!
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
