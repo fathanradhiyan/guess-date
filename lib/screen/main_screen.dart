@@ -15,8 +15,6 @@ class _MainScreenState extends State<MainScreen> {
   List itemsTemp = [];
   int itemLength = 0;
   int total = 0;
-  bool isRight = false;
-  // bool _scanning = false;
   bool _visible = false;
 
   @override
@@ -117,31 +115,16 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                 ),
                 cardController: controller,
-                swipeUpdateCallback:
-                    (DragUpdateDetails details, Alignment align) {
-                  /// Get swiping card's alignment
-                  if (align.x < 3) {
-                    setState(() {
-                      isRight = false;
-                      print("isRight => $isRight");
-                      return isRight;
-                    });
-                  } else if (align.x >= 3){
-                    setState(() {
-                      isRight = true;
-                      print("align => $align isRight => $isRight");
-                      return isRight;
-                    });
-                  }
-                },
                 swipeCompleteCallback:
                     (CardSwipeOrientation orientation, int index) {
                   var cardValue = itemsTemp[index]['value'];
-                  if(isRight == false){
+                  if(orientation == CardSwipeOrientation.LEFT){
                     cardValue = 0;
-                  }
                     total = total + cardValue;
-                    print('angka skrg = $total dengan isRight = $isRight');
+                  }else if(orientation == CardSwipeOrientation.RIGHT){
+                    total = total + cardValue;
+                    // print('angka skrg = $total dan arah $orientation');
+                  }
                 },
               ),
             ),
