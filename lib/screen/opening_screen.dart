@@ -51,13 +51,13 @@ class OpeningScreen extends StatelessWidget {
                   child: LottieBuilder.asset('assets/images/pick_date.json'),
                 ),
                 Text(
-                  'Swipe Right if Any\nSwipe Left Otherwise',
+                  'Click Next When You Already\nHave a Date in Your Mind',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.abel(
                     color: ColorsConsts.purple_morning,
                     fontWeight: FontWeight.w600,
                     fontSize: 20,
-                    letterSpacing: 3,
+                    letterSpacing: 2,
                   ),
                 ),
                 SizedBox(
@@ -72,7 +72,7 @@ class OpeningScreen extends StatelessWidget {
                     elevation: 5,
                     color: ColorsConsts.purple_dawn,
                     child: Text(
-                      'Got it, Next'.toUpperCase(),
+                      'Next'.toUpperCase(),
                       style: GoogleFonts.mcLaren(color: ColorsConsts.purple_morning, fontSize: 18),
                     ),
                   ),
