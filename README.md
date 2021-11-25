@@ -4,8 +4,8 @@ Think of a date, and this app will read your mind
 
 ## Getting Started
 
-1. install the apps
-2. open the apps
-3. read the instructions carefully, then click 'got it, next'
-4. enjoy!!
+1. Install the apps
+2. Open the apps
+3. Read the instructions carefully, then click 'Next'
+4. Enjoy!!
 
