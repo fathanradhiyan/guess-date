@@ -16,6 +16,8 @@ class _MainScreenState extends State<MainScreen> {
   int itemLength = 0;
   int total = 0;
   bool _visible = false;
+  bool _agreeVisible = false;
+  bool _disagreeVisible = false;
 
   @override
   void initState() {
@@ -32,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: ColorsConsts.purple_midnight,
       body: getBody(),
-      bottomSheet: getFooter(),
+      // bottomSheet: getFooter(),
     );
   }
 
@@ -120,42 +122,94 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               cardController: controller,
+              swipeUpdateCallback:
+                  (DragUpdateDetails details, Alignment align) {
+                /// Get swiping card's alignment
+                if(align.x >= -3 && align.x <= 3){
+                  setState(() {
+                    _disagreeVisible = false;
+                    _agreeVisible = false;
+                  });
+                } else if (align.x < -3) {
+                  setState(() {
+                    _disagreeVisible = true;
+                    _agreeVisible = false;
+                  });
+                } else if (align.x > 3) {
+                  setState(() {
+                    _agreeVisible = true;
+                    _disagreeVisible = false;
+                  });
+                }
+              },
               swipeCompleteCallback:
                   (CardSwipeOrientation orientation, int index) {
                 var cardValue = itemsTemp[index]['value'];
                 if (orientation == CardSwipeOrientation.LEFT) {
+                  setState(() {
+                    _disagreeVisible = false;
+                  });
                   cardValue = 0;
                   total = total + cardValue;
                 } else if (orientation == CardSwipeOrientation.RIGHT) {
+                  setState(() {
+                    _agreeVisible = false;
+                  });
                   total = total + cardValue;
                   // print('angka skrg = $total dan arah $orientation');
                 }
               },
             ),
           ),
+          Positioned(
+            top: 0,
+            right: 0,
+            left: 0,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 64),
+              child: Container(
+                width: double.infinity,
+                color: ColorsConsts.purple_midnight,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 30.0),
+                  child: Text(
+                    'Swipe Right if Any\nSwipe Left Otherwise',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.abel(
+                      color: ColorsConsts.purple_morning,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                      letterSpacing: 3,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.5,
+            right: 16,
+            child: Visibility(
+              visible: _agreeVisible,
+                child: Icon(
+              Icons.check_circle,
+              color: Colors.green.withOpacity(0.3),
+              size: 64,
+            )),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.5,
+            left: 16,
+            child: Visibility(
+                visible: _disagreeVisible,
+                child: Icon(
+                  Icons.cancel,
+                  color: Colors.red.withOpacity(0.3),
+                  size: 64,
+                )),
+          ),
         ],
       ),
-    );
-  }
-
-  Widget getFooter() {
-    return Container(
-      width: double.infinity,
-      color: ColorsConsts.purple_midnight,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 30.0),
-        child: Text(
-          'Swipe Right if Any\nSwipe Left Otherwise',
-          textAlign: TextAlign.center,
-          style: GoogleFonts.abel(
-            color: ColorsConsts.purple_morning,
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            letterSpacing: 3,
-          ),
-        ),
-      ),
-
     );
   }
 }
