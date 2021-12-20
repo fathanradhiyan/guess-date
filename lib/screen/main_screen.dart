@@ -3,7 +3,6 @@ import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:guess_date_app/const/color.dart';
 import 'package:guess_date_app/data/card_json.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:guess_date_app/screen/opening_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -21,7 +20,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setState(() {
       itemsTemp = card_json;
@@ -34,7 +32,6 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: ColorsConsts.purple_midnight,
       body: getBody(),
-      // bottomSheet: getFooter(),
     );
   }
 
@@ -156,7 +153,6 @@ class _MainScreenState extends State<MainScreen> {
                     _agreeVisible = false;
                   });
                   total = total + cardValue;
-                  // print('angka skrg = $total dan arah $orientation');
                 }
               },
             ),
