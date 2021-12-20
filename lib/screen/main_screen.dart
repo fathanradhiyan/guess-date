@@ -76,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     RaisedButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => OpeningScreen()));
