@@ -64,16 +64,30 @@ class _MainScreenState extends State<MainScreen> {
                 visible: _visible,
                 child: Column(
                   children: [
-                    Text(
-                      total.toString(),
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.mcLaren(
-                        color: ColorsConsts.purple_morning,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 36,
-                        letterSpacing: 3,
-                      ),
-                    ),
+                    total == 0
+                        ? Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: Text(
+                              'Pick a Date,\n Dumbass!!',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.mcLaren(
+                                color: ColorsConsts.purple_morning,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 24,
+                                letterSpacing: 3,
+                              ),
+                            ),
+                        )
+                        : Text(
+                            total.toString(),
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.mcLaren(
+                              color: ColorsConsts.purple_morning,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 36,
+                              letterSpacing: 3,
+                            ),
+                          ),
                     RaisedButton(
                       onPressed: () {
                         Navigator.pushReplacement(
@@ -122,7 +136,7 @@ class _MainScreenState extends State<MainScreen> {
               swipeUpdateCallback:
                   (DragUpdateDetails details, Alignment align) {
                 /// Get swiping card's alignment
-                if(align.x >= -3 && align.x <= 3){
+                if (align.x >= -3 && align.x <= 3) {
                   setState(() {
                     _disagreeVisible = false;
                     _agreeVisible = false;
@@ -186,12 +200,12 @@ class _MainScreenState extends State<MainScreen> {
             top: MediaQuery.of(context).size.height * 0.5,
             right: 16,
             child: Visibility(
-              visible: _agreeVisible,
+                visible: _agreeVisible,
                 child: Icon(
-              Icons.check_circle,
-              color: Colors.green.withOpacity(0.3),
-              size: 64,
-            )),
+                  Icons.check_circle,
+                  color: Colors.green.withOpacity(0.3),
+                  size: 64,
+                )),
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.5,
